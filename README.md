@@ -26,3 +26,39 @@ We compare:
 
 ## Repository Structure
 
+├─ main.py # CLI entry (train/test; switches Tabular vs DQN by --model)
+├─ env.py # DataCenterEnv (price matrix, rules, rewards, transitions)
+├─ agent.py # Tabular Q-Learning agent (Q-table, epsilon decay)
+├─ agent3_DQN.py # DQN agent (PER, n-step, target net, soft updates)
+├─ Utils.py # Training/validation loops + plotting helpers
+├─ requirements.txt # Python dependencies
+├─ train.xlsx # Training data (Excel): PRICES + 24 hourly price columns
+├─ validate.xlsx # Validation data (Excel)
+├─ README.md # (this file)
+├─ LICENSE # MIT
+└─ Data_Center_energy_agent_RL_optimization.pdf # Project report
+
+
+
+---
+
+## Data Format
+
+Place your Excel file(s) in the repo root. Expected shape:
+- Column **`PRICES`** (timestamps/dates)
+- Columns **2..25** → 24 hourly prices for each day (one row per day)
+
+Example file names we use below: `train.xlsx`, `validate.xlsx`.
+
+---
+
+## Setup
+
+```bash
+python -m venv .venv
+# macOS/Linux
+source .venv/bin/activate
+# Windows (PowerShell)
+# .\.venv\Scripts\Activate.ps1
+
+pip install -r requirements.txt
